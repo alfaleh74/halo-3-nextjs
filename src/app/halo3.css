@@ -1,0 +1,754 @@
+/* Halo 3 Menu Styles - Integrated for Next.js */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.halo3-video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  /* Prevent flickering during transitions */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  /* Smooth rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  /* Prevent video from causing layout shifts */
+  will-change: auto;
+  /* Ensure smooth playback */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Menu Styles */
+.halo3-menu {
+  list-style-type: none;
+  margin-top: 60vh;
+  margin-left: 12vh;
+  padding-left: 0;
+  padding-bottom: 100%;
+  width: 45vh;
+  background-color: #00000063;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.halo3-lobby-menu {
+  list-style-type: none;
+  margin-top: 0vh;
+  margin-left: 12vh;
+  padding-left: 0;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  width: 70vh;
+  background-color: #00000032;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Menu Link Styles */
+.halo3-menu li a,
+.halo3-lobby-menu li a {
+  display: block;
+  color: #8094B4;
+  padding: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Main Menu Specific - Larger Text */
+.halo3-menu li a {
+  padding: 4px 6px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Main Menu First Item - Grayed Out */
+.halo3-menu li:first-child a {
+  color: #4e5b6e;
+  padding: 4px 6px;
+  font-size: 20px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Main Menu Hover Effect - Brown Gradient */
+.halo3-menu li a:hover:not(.no-hover) {
+  background: linear-gradient(90deg, #714834 0%, #54362E 100%);
+  color: #e8d5c4;
+  animation: none;
+}
+
+/* Lobby Menu Hover Animation */
+.halo3-lobby-menu li a:hover:not(.no-hover) {
+  animation: halo3-pulse 2.0s infinite;
+}
+
+/* Pulse Animation (for lobby menus) */
+@keyframes halo3-pulse {
+  0% {
+    background-color: #54362E;
+    color: #b6b6b6;
+  }
+  50% {
+    background-color: #714834;
+    color: #b6b6b6;
+  }
+  100% {
+    background-color: #54362E;
+    color: #b6b6b6;
+  }
+}
+
+/* Lobby Menu First Item (Title) */
+.halo3-lobby-menu li:first-child a {
+  color: #ced7e4;
+  pointer-events: none;
+  border-bottom: 2px solid #3f455378;
+  font-size: 40px;
+}
+
+/* Lobby Menu Specific Styles */
+.halo3-lobby-menu li:nth-child(n+2):nth-child(-n+6) {
+  background-color: #40568455;
+}
+
+.halo3-lobby-menu li:nth-child(n+7) a {
+  pointer-events: none;
+  color: #8094B4;
+}
+
+/* Logo Styles */
+.halo3-logo {
+  position: absolute;
+  top: 65vh;
+  left: 50%;
+  z-index: 10;
+}
+
+.halo3-logo img {
+  width: 80vh;
+  height: auto;
+}
+
+.halo3-bungie-logo {
+  position: absolute;
+  top: 85vh;
+  left: 75%;
+  z-index: 10;
+}
+
+.halo3-bungie-logo img {
+  width: 25vh;
+  height: auto;
+}
+
+/* Page Logo (in-menu) */
+.halo3-page-logo img {
+  padding-top: 4vh;
+  margin-left: 0;
+  width: 100%;
+  height: 25vh;
+}
+
+.halo3-page-logo-full img {
+  padding-top: 5vh;
+  margin-left: 0;
+  width: 68vh;
+  height: auto;
+}
+
+/* Controller Icons */
+.halo3-controller-icon {
+  width: 4vh;
+  height: auto;
+  vertical-align: middle;
+  padding-right: 1px;
+  padding-left: 6px;
+  display: inline-block;
+}
+
+/* Keyboard Keys */
+.halo3-keyboard-key {
+  display: inline-block;
+  min-width: 4vh;
+  height: 4vh;
+  line-height: 4vh;
+  text-align: center;
+  background-color: #2b3340;
+  border: 2px solid #5a6270;
+  border-radius: 4px;
+  color: #ced7e4;
+  font-size: 1.2vh;
+  font-weight: bold;
+  padding: 0 8px;
+  margin-right: 6px;
+  vertical-align: middle;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Button Bar Container */
+.halo3-button-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.halo3-button-bar > * {
+  display: inline-block;
+}
+
+/* Campaign Menu Specific */
+.halo3-lobby-menu li:nth-child(7) a {
+  color: white;
+  border-top: 2px solid rgba(129, 188, 206, 0.368);
+  border-bottom: 2px solid rgba(129, 188, 206, 0.368);
+  display: inline-block;
+  width: 68vh;
+}
+
+/* Forge Menu Specific - Edit Options Line */
+.halo3-lobby-menu li:nth-child(7) a {
+  color: white !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.halo3-lobby-menu li:nth-child(13) a {
+  color: white;
+  border-top: 2px solid rgba(129, 188, 206, 0.219);
+  border-bottom: 2px solid rgba(129, 188, 206, 0.219);
+  display: inline-block;
+  background-color: #1a191966;
+  width: 68vh;
+  padding-top: 2vh;
+}
+
+.halo3-lobby-menu li:nth-child(14) {
+  list-style-type: none;
+  padding-left: 0;
+  background-color: #40568455;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  padding-bottom: 100%;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Multiplayer/Other Menu Bottom Bar */
+.halo3-bottom-bar {
+  color: white;
+  border-top: 2px solid rgba(129, 188, 206, 0.219);
+  border-bottom: 2px solid rgba(129, 188, 206, 0.219);
+  display: inline-block;
+  background-color: #1a191966;
+  width: 68vh;
+  padding-top: 4vh;
+}
+
+/* Lobby List Dropdown */
+.halo3-lobby-list {
+  display: none;
+  position: absolute;
+  top: 13vh;
+  left: 41vh;
+  width: 20vw;
+  background-color: #4A505C;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.halo3-lobby-list.active {
+  display: block;
+}
+
+.halo3-lobby-list ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.halo3-lobby-list li {
+  list-style-type: none;
+  width: 100%;
+  padding: 3px 0;
+  padding-left: 25px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+.halo3-lobby-list li:hover {
+  animation: halo3-pulse 2.0s infinite;
+}
+
+.halo3-lobby-list li a {
+  display: block;
+  color: #8094B4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 0;
+}
+
+/* Switch Lobby Active State */
+.switch-lobby-active {
+  background-color: #4A505C !important;
+  color: #ccd0d7 !important;
+}
+
+/* Content Wrapper Blur */
+.content-wrapper {
+  transition: filter 0.3s ease;
+}
+
+.content-wrapper.blurred {
+  filter: blur(2px);
+}
+
+/* Network Selection - Full Screen Overlay */
+.halo3-network-select {
+  display: none;
+  position: absolute;
+  top: 12vh;
+  left: 0vw;
+  width: 100%;
+  height: 78vh;
+  background-color: #2d3b58b9;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+.halo3-network-select.active {
+  display: block;
+}
+
+.halo3-network-select ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.halo3-network-select li {
+  list-style-type: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.halo3-network-select li a {
+  display: inline-block;
+  color: #8094B4;
+  text-decoration: none;
+  width: 10vw;
+  padding: 3px 12vw 3px 2vw;
+  margin-left: 15vw;
+}
+
+.halo3-network-select li:not(:first-child) a:hover {
+  animation: halo3-pulse 2.0s infinite;
+}
+
+.halo3-network-select li:first-child {
+  background-color: #06111cae;
+  margin-bottom: 1.5vh;
+}
+
+.halo3-network-select li:first-child a {
+  color: #ced7e4;
+  pointer-events: none;
+  border-bottom: 2px solid #3f455378;
+  font-size: 40px;
+  margin-left: 15vw;
+  padding: 3px 5vw 3px 2vw;
+  width: 100%;
+}
+
+/* Compact Selection Menu - For playlists, maps, missions, etc. */
+.halo3-select-menu {
+  display: none;
+  position: absolute;
+  top: 13vh;
+  left: 41vh;
+  max-width: 30vw;
+  max-height: 60vh;
+  overflow-y: auto;
+  background-color: #4A505C;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1000;
+  border: 2px solid #3f455378;
+}
+
+.halo3-select-menu.active {
+  display: block;
+}
+
+.halo3-select-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.halo3-select-menu li {
+  list-style-type: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.halo3-select-menu li:first-child {
+  background-color: #2b3340;
+  border-bottom: 2px solid #3f455378;
+}
+
+.halo3-select-menu li:first-child a {
+  color: #ced7e4;
+  font-size: 22px;
+  padding: 8px 20px;
+  pointer-events: none;
+}
+
+.halo3-select-menu li a {
+  display: block;
+  color: #8094B4;
+  text-decoration: none;
+  padding: 6px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.halo3-select-menu li:not(:first-child) a:hover {
+  animation: halo3-pulse 2.0s infinite;
+}
+
+/* Scrollbar styling for select menu */
+.halo3-select-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.halo3-select-menu::-webkit-scrollbar-track {
+  background: #2b3340;
+}
+
+.halo3-select-menu::-webkit-scrollbar-thumb {
+  background: #5a6270;
+  border-radius: 4px;
+}
+
+.halo3-select-menu::-webkit-scrollbar-thumb:hover {
+  background: #6a7280;
+}
+
+/* Option Box */
+.halo3-option-box {
+  display: none;
+  position: absolute;
+  margin-left: -15vw;
+  margin-top: -12vh;
+  width: 15vw;
+  z-index: 1000;
+}
+
+.halo3-option-box.active {
+  display: block;
+}
+
+.halo3-option-box a {
+  display: block;
+  color: #ced7e4;
+  text-decoration: none;
+  background-color: #4A505C;
+  padding: 8px 0;
+  text-align: left;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.halo3-option-box a:hover {
+  background-color: #616a7a;
+}
+
+/* Player Roster */
+.halo3-player-roster {
+  position: fixed;
+  top: 5vh;
+  right: 5vh;
+  width: 35vh;
+  background-color: #00000063;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 2vh;
+  z-index: 100;
+}
+
+.halo3-player-count {
+  color: #ced7e4;
+  font-size: 16px;
+  margin-bottom: 2vh;
+  text-align: center;
+  border-bottom: 2px solid #3f455378;
+  padding-bottom: 1vh;
+}
+
+.halo3-player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.halo3-player-card {
+  display: flex;
+  align-items: center;
+  background-color: #8B2A2A;
+  padding: 1.5vh;
+  gap: 1.5vh;
+  position: relative;
+  border: 2px solid #5a222278;
+}
+
+.halo3-player-emblem {
+  width: 48px;
+  height: 48px;
+  background-color: #2b3340;
+  border: 2px solid #5a6270;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.halo3-player-emblem-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3f4555 25%, #2b3340 75%);
+}
+
+.halo3-player-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5vh;
+}
+
+.halo3-player-name {
+  color: #ced7e4;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.halo3-player-rank {
+  color: #8094B4;
+  font-size: 12px;
+}
+
+.halo3-player-crown {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: #FFD700;
+  font-size: 20px;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+}
+
+/* Classic Halo 3 Roster (right side) */
+.halo3-roster {
+  position: fixed;
+  top: 6vh;
+  right: 6vh;
+  width: 40vh;
+  z-index: 110;
+}
+
+.halo3-roster-count {
+  color: #ced7e4;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 1.5vh;
+}
+
+.halo3-roster-entry {
+  display: flex;
+  align-items: center;
+  gap: 1.2vh;
+}
+
+/* Spinner disc shown to the left of the bar (animated rotating ring like Halo 3) */
+.halo3-roster-spinner {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background:
+    conic-gradient(#8ea0b9 0 90deg, transparent 90deg 180deg, #8ea0b9 180deg 270deg, transparent 270deg 360deg),
+    radial-gradient(farthest-side, transparent calc(100% - 4px), #8ea0b9 calc(100% - 4px));
+  opacity: 0.95;
+  animation: halo3-spinner-rotate 2s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes halo3-spinner-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.halo3-roster-bar {
+  position: relative;
+  flex: 1;
+  height: 5.4vh;
+  min-width: 30vh;
+  background: linear-gradient(180deg, #972727 0%, #7a1e1e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+    0 3px 8px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  padding: 0 3.2vh 0 5.6vh;
+}
+
+/* subtle diagonal highlight */
+.halo3-roster-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.08), rgba(255,255,255,0) 40%);
+  pointer-events: none;
+}
+
+/* top bevel highlight + bottom shade lines */
+.halo3-roster-bar::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0; height: 2px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0));
+  pointer-events: none;
+}
+.halo3-roster-bar .halo3-bevel-bottom { display:none; }
+.halo3-roster-bar::marker { content: none; }
+
+.halo3-roster-emblem-wrap {
+  position: absolute;
+  left: 1.2vh;
+  width: 3.2vh;
+  height: 3.2vh;
+  border-radius: 50%;
+  background-color: #2b3340;
+  border: 2px solid #cfd6e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.halo3-roster-emblem-placeholder {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 40% 40%, #3f4555, #283040);
+}
+
+.halo3-roster-name {
+  color: #f2f4f8;
+  font-size: 17px;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.halo3-roster-device-bg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 34px;
+  background: linear-gradient(180deg, rgba(120, 100, 100, 0.7) 0%, rgba(90, 70, 70, 0.8) 100%);
+  border-left: 1px solid rgba(0,0,0,0.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.halo3-roster-rank-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.halo3-roster-device {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  z-index: 2;
+}
+
+/* Bottom right hint (Change Teams) */
+.halo3-bottom-hint {
+  position: fixed;
+  bottom: 3.2vh;
+  right: 4vh;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ced7e4;
+  font-size: 14px;
+  z-index: 110;
+  opacity: 0.95;
+}
+.halo3-bottom-hint .keys {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.halo3-bottom-hint .keys .key {
+  display: inline-block;
+  min-width: 28px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  background: #2b3340;
+  border: 1px solid #5a6270;
+  border-radius: 4px;
+  color: #cfd6e1;
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+/* Utility Classes */
+.no-hover {
+  pointer-events: none !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
